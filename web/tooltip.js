@@ -131,7 +131,6 @@
     tooltip.setAttribute("role", "toolbar");
     tooltip.setAttribute("aria-hidden", "true");
     tooltip.innerHTML = `
-      <div class="omni-selection-tooltip__selection" dir="auto"></div>
       <div class="omni-selection-tooltip__actions"></div>
     `;
 
@@ -214,10 +213,6 @@
         .forEach((link, index) => {
           link.href = ACTIONS[index].href(selection);
         });
-
-      const label = tooltip.querySelector(".omni-selection-tooltip__selection");
-      label.textContent = selection;
-      label.setAttribute("title", selection);
     }
 
     function showTooltip() {

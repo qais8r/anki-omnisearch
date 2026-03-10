@@ -14,9 +14,9 @@
   position: fixed;
   z-index: 2147483647;
   display: grid;
-  gap: 10px;
-  min-width: 228px;
-  max-width: min(320px, calc(100vw - 24px));
+  gap: 0;
+  min-width: 0;
+  max-width: calc(100vw - 24px);
   padding: 10px;
   border: 1px solid var(--omni-tooltip-border);
   border-radius: 14px;
@@ -88,20 +88,6 @@ body.nightMode #omni-selection-tooltip,
 #omni-selection-tooltip.is-visible {
   opacity: 1;
   pointer-events: auto;
-}
-
-.omni-selection-tooltip__selection {
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  font:
-    500 13px/1.35 "SF Pro Text",
-    "Segoe UI Variable Text",
-    "Segoe UI",
-    sans-serif;
-  letter-spacing: -0.01em;
-  color: var(--omni-tooltip-muted);
 }
 
 .omni-selection-tooltip__actions {
