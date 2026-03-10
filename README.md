@@ -1,19 +1,22 @@
-# Omni Selection Tooltip
+# OmniSearch
 
-Anki add-on that shows a floating action tooltip whenever text is selected on a card.
+## Description
 
-## Actions
+**OmniSearch adds a small popup to Anki cards whenever you highlight text.** Instead of copying text and opening a browser manually, you can select a word or phrase and open it instantly in search, image search, pronunciation search, or an AI assistant.
 
-- Google search
+## Features
+
+When you highlight text on a card, a clean floating tooltip appears next to the selection with one-click actions for:
+
+- Google Search
 - Google Images
-- Google pronunciation search
-- ChatGPT prompt handoff
-- Gemini prompt handoff
+- Pronunciation
+- ChatGPT
+- Gemini
+- Claude
 
-## Install
+For AI actions, the selected text is automatically wrapped in a simple prompt: `Explain this in an easy to understand way: {selected text}`. In the future, I'll probably implement a configuration that let's you change the prompt prefix.
 
-1. Zip the contents of this folder, not the folder itself.
-2. Rename the archive to `omni-selection-tooltip.ankiaddon` if needed.
-3. Import it through Anki's add-on manager.
+## How To Use
 
-The packaged add-on installs as `omni_selection_tooltip`, which avoids folder-name issues with punctuation.
+To use OmniSearch, open any card during review or preview. Highlight any word or phrase, and a tooltip should appear. Click one of the icons in the popup tooltip. That action opens your browser with the selected text already filled in.
