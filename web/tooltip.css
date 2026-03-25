@@ -9,15 +9,13 @@
   --omni-tooltip-bg-top: rgba(255, 255, 255, 0.94);
   --omni-tooltip-border: rgba(15, 23, 42, 0.1);
   --omni-tooltip-shadow:
-    0 22px 44px rgba(15, 23, 42, 0.14),
-    0 8px 18px rgba(15, 23, 42, 0.07);
+    0 22px 44px rgba(15, 23, 42, 0.14), 0 8px 18px rgba(15, 23, 42, 0.07);
   --omni-tooltip-text: #0f172a;
   --omni-tooltip-button-bg: #ffffff;
   --omni-tooltip-button-bg-bottom: #f8fafc;
   --omni-tooltip-button-border: rgba(148, 163, 184, 0.2);
   --omni-tooltip-button-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.96),
-    0 10px 24px rgba(15, 23, 42, 0.07);
+    inset 0 1px 0 rgba(255, 255, 255, 0.96), 0 10px 24px rgba(15, 23, 42, 0.07);
   --omni-tooltip-focus: rgba(59, 130, 246, 0.32);
   --omni-tooltip-label-bg: rgba(15, 23, 42, 0.94);
   --omni-tooltip-label-border: rgba(255, 255, 255, 0.1);
@@ -30,8 +28,11 @@
   padding: 8px;
   border: 1px solid var(--omni-tooltip-border);
   border-radius: 20px;
-  background:
-    linear-gradient(180deg, var(--omni-tooltip-bg-top), var(--omni-tooltip-bg));
+  background: linear-gradient(
+    180deg,
+    var(--omni-tooltip-bg-top),
+    var(--omni-tooltip-bg)
+  );
   box-shadow: var(--omni-tooltip-shadow);
   color: var(--omni-tooltip-text);
   backdrop-filter: blur(18px) saturate(170%);
@@ -49,15 +50,13 @@
     --omni-tooltip-bg-top: rgba(30, 41, 59, 0.92);
     --omni-tooltip-border: rgba(255, 255, 255, 0.08);
     --omni-tooltip-shadow:
-      0 24px 52px rgba(0, 0, 0, 0.4),
-      0 8px 20px rgba(0, 0, 0, 0.26);
+      0 24px 52px rgba(0, 0, 0, 0.4), 0 8px 20px rgba(0, 0, 0, 0.26);
     --omni-tooltip-text: #f8fafc;
     --omni-tooltip-button-bg: #1e293b;
     --omni-tooltip-button-bg-bottom: #131b26;
     --omni-tooltip-button-border: rgba(255, 255, 255, 0.08);
     --omni-tooltip-button-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.08),
-      0 8px 22px rgba(0, 0, 0, 0.22);
+      inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 8px 22px rgba(0, 0, 0, 0.22);
     --omni-tooltip-focus: rgba(125, 211, 252, 0.3);
     --omni-tooltip-label-bg: rgba(248, 250, 252, 0.96);
     --omni-tooltip-label-border: rgba(15, 23, 42, 0.08);
@@ -72,15 +71,13 @@ body.nightMode #omni-selection-tooltip,
   --omni-tooltip-bg-top: rgba(30, 41, 59, 0.92);
   --omni-tooltip-border: rgba(255, 255, 255, 0.08);
   --omni-tooltip-shadow:
-    0 24px 52px rgba(0, 0, 0, 0.4),
-    0 8px 20px rgba(0, 0, 0, 0.26);
+    0 24px 52px rgba(0, 0, 0, 0.4), 0 8px 20px rgba(0, 0, 0, 0.26);
   --omni-tooltip-text: #f8fafc;
   --omni-tooltip-button-bg: #1e293b;
   --omni-tooltip-button-bg-bottom: #131b26;
   --omni-tooltip-button-border: rgba(255, 255, 255, 0.08);
   --omni-tooltip-button-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    0 8px 22px rgba(0, 0, 0, 0.22);
+    inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 8px 22px rgba(0, 0, 0, 0.22);
   --omni-tooltip-focus: rgba(125, 211, 252, 0.3);
   --omni-tooltip-label-bg: rgba(248, 250, 252, 0.96);
   --omni-tooltip-label-border: rgba(15, 23, 42, 0.08);
@@ -165,17 +162,22 @@ body.nightMode #omni-selection-tooltip,
   --omni-action-angle: 0deg;
   --omni-action-radius: 13px;
   --omni-action-border-width: 2px;
-  --omni-action-surface-fill:
-    linear-gradient(180deg, var(--omni-tooltip-button-bg), var(--omni-tooltip-button-bg-bottom));
-  --omni-action-base:
-    linear-gradient(180deg, var(--omni-tooltip-button-bg), var(--omni-tooltip-button-bg-bottom));
-  --omni-action-ring:
-    conic-gradient(
-      from var(--omni-action-angle),
-      rgba(59, 130, 246, 0) 0%,
-      rgba(59, 130, 246, 0.94) 10%,
-      rgba(59, 130, 246, 0) 20%
-    );
+  --omni-action-surface-fill: linear-gradient(
+    180deg,
+    var(--omni-tooltip-button-bg),
+    var(--omni-tooltip-button-bg-bottom)
+  );
+  --omni-action-base: linear-gradient(
+    180deg,
+    var(--omni-tooltip-button-bg),
+    var(--omni-tooltip-button-bg-bottom)
+  );
+  --omni-action-ring: conic-gradient(
+    from var(--omni-action-angle),
+    rgba(59, 130, 246, 0) 0%,
+    rgba(59, 130, 246, 0.94) 10%,
+    rgba(59, 130, 246, 0) 20%
+  );
   --omni-action-glow: rgba(59, 130, 246, 0.24);
   position: relative;
   display: grid;
@@ -217,7 +219,9 @@ body.nightMode #omni-selection-tooltip,
   content: "";
   position: absolute;
   inset: var(--omni-action-border-width);
-  border-radius: calc(var(--omni-action-radius) - var(--omni-action-border-width));
+  border-radius: calc(
+    var(--omni-action-radius) - var(--omni-action-border-width)
+  );
   background: var(--omni-action-surface-fill);
   z-index: 1;
 }
@@ -231,7 +235,8 @@ body.nightMode #omni-selection-tooltip,
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.64),
     0 12px 22px -18px var(--omni-action-glow);
-  animation: omni-selection-tooltip-border-spin 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  animation: omni-selection-tooltip-border-spin 3s cubic-bezier(0.4, 0, 0.2, 1)
+    infinite;
 }
 
 .omni-selection-tooltip__action:focus-visible {
@@ -256,30 +261,28 @@ body.nightMode #omni-selection-tooltip,
 }
 
 .omni-selection-tooltip__action[data-service="google"] {
-  --omni-action-ring:
-    conic-gradient(
-      from var(--omni-action-angle),
-      rgba(66, 133, 244, 0) 0%,
-      #4285f4 4%,
-      #34a853 9%,
-      #fbbc05 14%,
-      #ea4335 19%,
-      rgba(234, 67, 53, 0) 24%
-    );
+  --omni-action-ring: conic-gradient(
+    from var(--omni-action-angle),
+    rgba(66, 133, 244, 0) -10%,
+    #4285f4 20%,
+    #34a853 40%,
+    #fbbc05 60%,
+    #ea4335 80%,
+    rgba(234, 67, 53, 0) 110%
+  );
   --omni-action-glow: rgba(66, 133, 244, 0.24);
 }
 
 .omni-selection-tooltip__action[data-service="images"] {
-  --omni-action-ring:
-    conic-gradient(
-      from var(--omni-action-angle),
-      rgba(66, 133, 244, 0) 0%,
-      #4285f4 4%,
-      #34a853 9%,
-      #fbbc04 14%,
-      #ea4335 19%,
-      rgba(234, 67, 53, 0) 24%
-    );
+  --omni-action-ring: conic-gradient(
+    from var(--omni-action-angle),
+    rgba(66, 133, 244, 0) -10%,
+    #4285f4 20%,
+    #34a853 40%,
+    #fbbc04 60%,
+    #ea4335 80%,
+    rgba(234, 67, 53, 0) 110%
+  );
   --omni-action-glow: rgba(52, 168, 83, 0.22);
 }
 
@@ -288,13 +291,12 @@ body.nightMode #omni-selection-tooltip,
 .omni-selection-tooltip__action[data-service="pronunciation"]:visited,
 .omni-selection-tooltip__action[data-service="pronunciation"]:hover,
 .omni-selection-tooltip__action[data-service="pronunciation"]:active {
-  --omni-action-ring:
-    conic-gradient(
-      from var(--omni-action-angle),
-      rgba(15, 23, 42, 0) 0%,
-      rgba(15, 23, 42, 0.96) 10%,
-      rgba(15, 23, 42, 0) 20%
-    );
+  --omni-action-ring: conic-gradient(
+    from var(--omni-action-angle),
+    rgba(15, 23, 42, 0) -10%,
+    rgba(15, 23, 42, 0.96) 50%,
+    rgba(15, 23, 42, 0) 110%
+  );
   --omni-action-glow: rgba(15, 23, 42, 0.24);
   color: #192338 !important;
 }
@@ -304,39 +306,36 @@ body.nightMode #omni-selection-tooltip,
 .omni-selection-tooltip__action[data-service="chatgpt"]:visited,
 .omni-selection-tooltip__action[data-service="chatgpt"]:hover,
 .omni-selection-tooltip__action[data-service="chatgpt"]:active {
-  --omni-action-ring:
-    conic-gradient(
-      from var(--omni-action-angle),
-      rgba(16, 163, 127, 0) 0%,
-      #10a37f 10%,
-      rgba(16, 163, 127, 0) 20%
-    );
+  --omni-action-ring: conic-gradient(
+    from var(--omni-action-angle),
+    rgba(16, 163, 127, 0) -10%,
+    #10a37f 50%,
+    rgba(16, 163, 127, 0) 110%
+  );
   --omni-action-glow: rgba(16, 163, 127, 0.28);
   color: #0f7d74 !important;
 }
 
 .omni-selection-tooltip__action[data-service="gemini"] {
-  --omni-action-ring:
-    conic-gradient(
-      from var(--omni-action-angle),
-      rgba(49, 134, 255, 0) 0%,
-      #3186ff 4%,
-      #08b962 9%,
-      #fabc12 14%,
-      #f94543 19%,
-      rgba(249, 69, 67, 0) 24%
-    );
+  --omni-action-ring: conic-gradient(
+    from var(--omni-action-angle),
+    rgba(49, 134, 255, 0) -10%,
+    #3186ff 20%,
+    #08b962 40%,
+    #fabc12 60%,
+    #f94543 80%,
+    rgba(249, 69, 67, 0) 110%
+  );
   --omni-action-glow: rgba(49, 134, 255, 0.24);
 }
 
 .omni-selection-tooltip__action[data-service="claude"] {
-  --omni-action-ring:
-    conic-gradient(
-      from var(--omni-action-angle),
-      rgba(217, 119, 87, 0) 0%,
-      #d97757 10%,
-      rgba(217, 119, 87, 0) 20%
-    );
+  --omni-action-ring: conic-gradient(
+    from var(--omni-action-angle),
+    rgba(217, 119, 87, 0) -10%,
+    #d97757 50%,
+    rgba(217, 119, 87, 0) 110%
+  );
   --omni-action-glow: rgba(217, 119, 87, 0.28);
 }
 
@@ -364,29 +363,43 @@ body.nightMode .omni-selection-tooltip__action[data-service="chatgpt"]:active,
 }
 
 html.nightMode .omni-selection-tooltip__action[data-service="pronunciation"],
-html.nightMode .omni-selection-tooltip__action[data-service="pronunciation"]:link,
-html.nightMode .omni-selection-tooltip__action[data-service="pronunciation"]:visited,
-html.nightMode .omni-selection-tooltip__action[data-service="pronunciation"]:hover,
-html.nightMode .omni-selection-tooltip__action[data-service="pronunciation"]:active,
+html.nightMode
+  .omni-selection-tooltip__action[data-service="pronunciation"]:link,
+html.nightMode
+  .omni-selection-tooltip__action[data-service="pronunciation"]:visited,
+html.nightMode
+  .omni-selection-tooltip__action[data-service="pronunciation"]:hover,
+html.nightMode
+  .omni-selection-tooltip__action[data-service="pronunciation"]:active,
 body.nightMode .omni-selection-tooltip__action[data-service="pronunciation"],
-body.nightMode .omni-selection-tooltip__action[data-service="pronunciation"]:link,
-body.nightMode .omni-selection-tooltip__action[data-service="pronunciation"]:visited,
-body.nightMode .omni-selection-tooltip__action[data-service="pronunciation"]:hover,
-body.nightMode .omni-selection-tooltip__action[data-service="pronunciation"]:active,
+body.nightMode
+  .omni-selection-tooltip__action[data-service="pronunciation"]:link,
+body.nightMode
+  .omni-selection-tooltip__action[data-service="pronunciation"]:visited,
+body.nightMode
+  .omni-selection-tooltip__action[data-service="pronunciation"]:hover,
+body.nightMode
+  .omni-selection-tooltip__action[data-service="pronunciation"]:active,
 .nightMode .omni-selection-tooltip__action[data-service="pronunciation"],
 .nightMode .omni-selection-tooltip__action[data-service="pronunciation"]:link,
-.nightMode .omni-selection-tooltip__action[data-service="pronunciation"]:visited,
+.nightMode
+  .omni-selection-tooltip__action[data-service="pronunciation"]:visited,
 .nightMode .omni-selection-tooltip__action[data-service="pronunciation"]:hover,
-.nightMode .omni-selection-tooltip__action[data-service="pronunciation"]:active {
+.nightMode
+  .omni-selection-tooltip__action[data-service="pronunciation"]:active {
   color: #f8fafc !important;
 }
 
-.omni-selection-tooltip__action[data-service="chatgpt"] .omni-selection-tooltip__icon svg {
+.omni-selection-tooltip__action[data-service="chatgpt"]
+  .omni-selection-tooltip__icon
+  svg {
   width: 19px;
   height: 19px;
 }
 
-.omni-selection-tooltip__action[data-service="pronunciation"] .omni-selection-tooltip__icon svg {
+.omni-selection-tooltip__action[data-service="pronunciation"]
+  .omni-selection-tooltip__icon
+  svg {
   width: 22px;
   height: 22px;
 }
