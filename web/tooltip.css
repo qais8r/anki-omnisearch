@@ -1,66 +1,90 @@
+@property --omni-action-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
 #omni-selection-tooltip {
-  --omni-tooltip-bg: rgba(255, 255, 255, 0.98);
+  --omni-tooltip-bg: rgba(255, 255, 255, 0.78);
+  --omni-tooltip-bg-top: rgba(255, 255, 255, 0.94);
   --omni-tooltip-border: rgba(15, 23, 42, 0.1);
   --omni-tooltip-shadow:
-    0 18px 40px rgba(15, 23, 42, 0.14),
-    0 4px 12px rgba(15, 23, 42, 0.08);
+    0 22px 44px rgba(15, 23, 42, 0.14),
+    0 8px 18px rgba(15, 23, 42, 0.07);
   --omni-tooltip-text: #0f172a;
-  --omni-tooltip-muted: #5b6474;
-  --omni-tooltip-button-bg: rgba(248, 250, 252, 0.92);
-  --omni-tooltip-button-border: rgba(15, 23, 42, 0.08);
-  --omni-tooltip-button-hover: rgba(241, 245, 249, 0.98);
-  --omni-tooltip-button-shadow: 0 1px 2px rgba(15, 23, 42, 0.05);
-  --omni-tooltip-focus: rgba(59, 130, 246, 0.3);
+  --omni-tooltip-button-bg: rgba(255, 255, 255, 0.88);
+  --omni-tooltip-button-bg-bottom: rgba(248, 250, 252, 0.94);
+  --omni-tooltip-button-border: rgba(148, 163, 184, 0.2);
+  --omni-tooltip-button-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.96),
+    0 10px 24px rgba(15, 23, 42, 0.07);
+  --omni-tooltip-focus: rgba(59, 130, 246, 0.32);
+  --omni-tooltip-label-bg: rgba(15, 23, 42, 0.94);
+  --omni-tooltip-label-border: rgba(255, 255, 255, 0.1);
+  --omni-tooltip-label-text: rgba(248, 250, 252, 0.98);
   position: fixed;
   z-index: 2147483647;
   display: grid;
-  gap: 0;
   min-width: 0;
   max-width: calc(100vw - 24px);
-  padding: 10px;
+  padding: 8px;
   border: 1px solid var(--omni-tooltip-border);
-  border-radius: 14px;
-  background: var(--omni-tooltip-bg);
+  border-radius: 20px;
+  background:
+    linear-gradient(180deg, var(--omni-tooltip-bg-top), var(--omni-tooltip-bg));
   box-shadow: var(--omni-tooltip-shadow);
   color: var(--omni-tooltip-text);
+  backdrop-filter: blur(18px) saturate(170%);
+  -webkit-backdrop-filter: blur(18px) saturate(170%);
   opacity: 0;
+  overflow: visible;
   pointer-events: none;
-  transition: opacity 120ms ease;
+  transition: opacity 140ms ease;
   user-select: none;
 }
 
 @media (prefers-color-scheme: dark) {
   #omni-selection-tooltip {
-    --omni-tooltip-bg: rgba(24, 24, 27, 0.98);
+    --omni-tooltip-bg: rgba(17, 24, 39, 0.82);
+    --omni-tooltip-bg-top: rgba(30, 41, 59, 0.92);
     --omni-tooltip-border: rgba(255, 255, 255, 0.08);
     --omni-tooltip-shadow:
-      0 20px 48px rgba(0, 0, 0, 0.42),
-      0 6px 18px rgba(0, 0, 0, 0.26);
-    --omni-tooltip-text: #f5f7fb;
-    --omni-tooltip-muted: #a2a9b6;
-    --omni-tooltip-button-bg: rgba(255, 255, 255, 0.045);
-    --omni-tooltip-button-border: rgba(255, 255, 255, 0.09);
-    --omni-tooltip-button-hover: rgba(255, 255, 255, 0.08);
-    --omni-tooltip-button-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-    --omni-tooltip-focus: rgba(125, 211, 252, 0.32);
+      0 24px 52px rgba(0, 0, 0, 0.4),
+      0 8px 20px rgba(0, 0, 0, 0.26);
+    --omni-tooltip-text: #f8fafc;
+    --omni-tooltip-button-bg: rgba(30, 41, 59, 0.98);
+    --omni-tooltip-button-bg-bottom: rgba(19, 27, 38, 0.98);
+    --omni-tooltip-button-border: rgba(255, 255, 255, 0.08);
+    --omni-tooltip-button-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.08),
+      0 8px 22px rgba(0, 0, 0, 0.22);
+    --omni-tooltip-focus: rgba(125, 211, 252, 0.3);
+    --omni-tooltip-label-bg: rgba(248, 250, 252, 0.96);
+    --omni-tooltip-label-border: rgba(15, 23, 42, 0.08);
+    --omni-tooltip-label-text: #0f172a;
   }
 }
 
 html.nightMode #omni-selection-tooltip,
 body.nightMode #omni-selection-tooltip,
 .nightMode #omni-selection-tooltip {
-  --omni-tooltip-bg: rgba(24, 24, 27, 0.98);
+  --omni-tooltip-bg: rgba(17, 24, 39, 0.82);
+  --omni-tooltip-bg-top: rgba(30, 41, 59, 0.92);
   --omni-tooltip-border: rgba(255, 255, 255, 0.08);
   --omni-tooltip-shadow:
-    0 20px 48px rgba(0, 0, 0, 0.42),
-    0 6px 18px rgba(0, 0, 0, 0.26);
-  --omni-tooltip-text: #f5f7fb;
-  --omni-tooltip-muted: #a2a9b6;
-  --omni-tooltip-button-bg: rgba(255, 255, 255, 0.045);
-  --omni-tooltip-button-border: rgba(255, 255, 255, 0.09);
-  --omni-tooltip-button-hover: rgba(255, 255, 255, 0.08);
-  --omni-tooltip-button-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-  --omni-tooltip-focus: rgba(125, 211, 252, 0.32);
+    0 24px 52px rgba(0, 0, 0, 0.4),
+    0 8px 20px rgba(0, 0, 0, 0.26);
+  --omni-tooltip-text: #f8fafc;
+  --omni-tooltip-button-bg: rgba(30, 41, 59, 0.98);
+  --omni-tooltip-button-bg-bottom: rgba(19, 27, 38, 0.98);
+  --omni-tooltip-button-border: rgba(255, 255, 255, 0.08);
+  --omni-tooltip-button-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 8px 22px rgba(0, 0, 0, 0.22);
+  --omni-tooltip-focus: rgba(125, 211, 252, 0.3);
+  --omni-tooltip-label-bg: rgba(248, 250, 252, 0.96);
+  --omni-tooltip-label-border: rgba(15, 23, 42, 0.08);
+  --omni-tooltip-label-text: #0f172a;
 }
 
 #omni-selection-tooltip::after {
@@ -72,7 +96,7 @@ body.nightMode #omni-selection-tooltip,
   margin-left: -6px;
   border-right: 1px solid var(--omni-tooltip-border);
   border-bottom: 1px solid var(--omni-tooltip-border);
-  background: var(--omni-tooltip-bg);
+  background: var(--omni-tooltip-bg-top);
 }
 
 #omni-selection-tooltip[data-placement="top"]::after {
@@ -93,23 +117,81 @@ body.nightMode #omni-selection-tooltip,
 .omni-selection-tooltip__actions {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 6px;
+  gap: 8px;
+}
+
+.omni-selection-tooltip__hint {
+  position: absolute;
+  left: 8px;
+  z-index: 2;
+  padding: 7px 11px;
+  border: 1px solid var(--omni-tooltip-label-border);
+  border-radius: 999px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0)),
+    var(--omni-tooltip-label-bg);
+  box-shadow:
+    0 18px 32px rgba(15, 23, 42, 0.18),
+    0 2px 8px rgba(15, 23, 42, 0.08);
+  color: var(--omni-tooltip-label-text);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(6px);
+  transition:
+    opacity 140ms ease,
+    transform 180ms cubic-bezier(0.22, 1, 0.36, 1);
+  white-space: nowrap;
+}
+
+#omni-selection-tooltip[data-placement="top"] .omni-selection-tooltip__hint {
+  bottom: calc(100% + 14px);
+}
+
+#omni-selection-tooltip[data-placement="bottom"] .omni-selection-tooltip__hint {
+  top: calc(100% + 14px);
+  transform: translateY(-6px);
+}
+
+.omni-selection-tooltip__hint.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .omni-selection-tooltip__action {
+  --omni-action-angle: 0deg;
+  --omni-action-radius: 13px;
+  --omni-action-border-width: 2px;
+  --omni-action-surface-fill: var(--omni-tooltip-button-bg);
+  --omni-action-base:
+    linear-gradient(180deg, var(--omni-tooltip-button-bg), var(--omni-tooltip-button-bg-bottom));
+  --omni-action-ring:
+    conic-gradient(
+      from var(--omni-action-angle),
+      rgba(59, 130, 246, 0) 0%,
+      rgba(59, 130, 246, 0.94) 10%,
+      rgba(59, 130, 246, 0) 20%
+    );
+  --omni-action-glow: rgba(59, 130, 246, 0.24);
+  position: relative;
   display: grid;
   place-items: center;
-  width: 38px;
-  height: 38px;
+  width: 40px;
+  height: 40px;
   margin: 0 auto;
+  padding: 0;
   border: 1px solid var(--omni-tooltip-button-border);
-  border-radius: 10px;
-  background: var(--omni-tooltip-button-bg);
+  border-radius: var(--omni-action-radius);
+  background: var(--omni-action-base);
   box-shadow: var(--omni-tooltip-button-shadow);
   color: var(--omni-tooltip-text);
+  isolation: isolate;
+  overflow: hidden;
   text-decoration: none;
   transition:
-    background-color 180ms cubic-bezier(0.22, 1, 0.36, 1),
     border-color 180ms cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow 220ms cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -121,28 +203,34 @@ body.nightMode #omni-selection-tooltip,
   color: var(--omni-tooltip-text) !important;
 }
 
-.omni-selection-tooltip__action:hover {
-  background: var(--omni-tooltip-button-hover);
-  border-color: rgba(107, 114, 128, 0.26);
-  box-shadow:
-    0 8px 18px rgba(38, 38, 38, 0.09),
-    0 1px 2px rgba(38, 38, 38, 0.05);
+.omni-selection-tooltip__action::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: transparent;
+  z-index: 0;
 }
 
-html.nightMode .omni-selection-tooltip__action:hover,
-body.nightMode .omni-selection-tooltip__action:hover,
-.nightMode .omni-selection-tooltip__action:hover {
-  box-shadow:
-    0 6px 14px rgba(0, 0, 0, 0.28),
-    0 1px 2px rgba(0, 0, 0, 0.22);
+.omni-selection-tooltip__action::after {
+  content: "";
+  position: absolute;
+  inset: var(--omni-action-border-width);
+  border-radius: calc(var(--omni-action-radius) - var(--omni-action-border-width));
+  background: var(--omni-action-surface-fill);
+  z-index: 1;
 }
 
-@media (prefers-color-scheme: dark) {
-  .omni-selection-tooltip__action:hover {
-    box-shadow:
-      0 6px 14px rgba(0, 0, 0, 0.28),
-      0 1px 2px rgba(0, 0, 0, 0.22);
-  }
+.omni-selection-tooltip__action:is(:hover, :focus-visible)::before {
+  background: var(--omni-action-ring);
+}
+
+.omni-selection-tooltip__action:is(:hover, :focus-visible) {
+  border-color: rgba(148, 163, 184, 0.24);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.64),
+    0 12px 22px -18px var(--omni-action-glow);
+  animation: omni-selection-tooltip-border-spin 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
 .omni-selection-tooltip__action:focus-visible {
@@ -150,26 +238,48 @@ body.nightMode .omni-selection-tooltip__action:hover,
   outline-offset: 2px;
 }
 
-.omni-selection-tooltip__action svg {
+.omni-selection-tooltip__icon {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+}
+
+.omni-selection-tooltip__icon svg {
   display: block;
   width: 18px;
   height: 18px;
-  transition:
-    transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 180ms ease;
+  opacity: 0.98;
 }
 
-.omni-selection-tooltip__action[data-service="chatgpt"],
-.omni-selection-tooltip__action[data-service="chatgpt"]:link,
-.omni-selection-tooltip__action[data-service="chatgpt"]:visited,
-.omni-selection-tooltip__action[data-service="chatgpt"]:hover,
-.omni-selection-tooltip__action[data-service="chatgpt"]:active {
-  color: #0f7d74 !important;
+.omni-selection-tooltip__action[data-service="google"] {
+  --omni-action-ring:
+    conic-gradient(
+      from var(--omni-action-angle),
+      rgba(66, 133, 244, 0) 0%,
+      #4285f4 4%,
+      #34a853 9%,
+      #fbbc05 14%,
+      #ea4335 19%,
+      rgba(234, 67, 53, 0) 24%
+    );
+  --omni-action-glow: rgba(66, 133, 244, 0.24);
 }
 
-.omni-selection-tooltip__action[data-service="chatgpt"] svg path,
-.omni-selection-tooltip__action[data-service="pronunciation"] svg path {
-  fill: currentColor;
+.omni-selection-tooltip__action[data-service="images"] {
+  --omni-action-ring:
+    conic-gradient(
+      from var(--omni-action-angle),
+      rgba(66, 133, 244, 0) 0%,
+      #4285f4 4%,
+      #34a853 9%,
+      #fbbc04 14%,
+      #ea4335 19%,
+      rgba(234, 67, 53, 0) 24%
+    );
+  --omni-action-glow: rgba(52, 168, 83, 0.22);
 }
 
 .omni-selection-tooltip__action[data-service="pronunciation"],
@@ -177,7 +287,61 @@ body.nightMode .omni-selection-tooltip__action:hover,
 .omni-selection-tooltip__action[data-service="pronunciation"]:visited,
 .omni-selection-tooltip__action[data-service="pronunciation"]:hover,
 .omni-selection-tooltip__action[data-service="pronunciation"]:active {
-  color: #161616 !important;
+  --omni-action-ring:
+    conic-gradient(
+      from var(--omni-action-angle),
+      rgba(15, 23, 42, 0) 0%,
+      rgba(15, 23, 42, 0.96) 10%,
+      rgba(15, 23, 42, 0) 20%
+    );
+  --omni-action-glow: rgba(15, 23, 42, 0.24);
+  color: #192338 !important;
+}
+
+.omni-selection-tooltip__action[data-service="chatgpt"],
+.omni-selection-tooltip__action[data-service="chatgpt"]:link,
+.omni-selection-tooltip__action[data-service="chatgpt"]:visited,
+.omni-selection-tooltip__action[data-service="chatgpt"]:hover,
+.omni-selection-tooltip__action[data-service="chatgpt"]:active {
+  --omni-action-ring:
+    conic-gradient(
+      from var(--omni-action-angle),
+      rgba(16, 163, 127, 0) 0%,
+      #10a37f 10%,
+      rgba(16, 163, 127, 0) 20%
+    );
+  --omni-action-glow: rgba(16, 163, 127, 0.28);
+  color: #0f7d74 !important;
+}
+
+.omni-selection-tooltip__action[data-service="gemini"] {
+  --omni-action-ring:
+    conic-gradient(
+      from var(--omni-action-angle),
+      rgba(49, 134, 255, 0) 0%,
+      #3186ff 4%,
+      #08b962 9%,
+      #fabc12 14%,
+      #f94543 19%,
+      rgba(249, 69, 67, 0) 24%
+    );
+  --omni-action-glow: rgba(49, 134, 255, 0.24);
+}
+
+.omni-selection-tooltip__action[data-service="claude"] {
+  --omni-action-ring:
+    conic-gradient(
+      from var(--omni-action-angle),
+      rgba(217, 119, 87, 0) 0%,
+      #d97757 10%,
+      rgba(217, 119, 87, 0) 20%
+    );
+  --omni-action-glow: rgba(217, 119, 87, 0.28);
+}
+
+.omni-selection-tooltip__action[data-service="chatgpt"] svg path,
+.omni-selection-tooltip__action[data-service="pronunciation"] svg path {
+  fill: currentColor;
 }
 
 html.nightMode .omni-selection-tooltip__action[data-service="chatgpt"],
@@ -213,41 +377,37 @@ body.nightMode .omni-selection-tooltip__action[data-service="pronunciation"]:act
 .nightMode .omni-selection-tooltip__action[data-service="pronunciation"]:visited,
 .nightMode .omni-selection-tooltip__action[data-service="pronunciation"]:hover,
 .nightMode .omni-selection-tooltip__action[data-service="pronunciation"]:active {
-  color: #f5f7fb !important;
+  color: #f8fafc !important;
 }
 
-@media (prefers-color-scheme: dark) {
-  .omni-selection-tooltip__action[data-service="chatgpt"],
-  .omni-selection-tooltip__action[data-service="chatgpt"]:link,
-  .omni-selection-tooltip__action[data-service="chatgpt"]:visited,
-  .omni-selection-tooltip__action[data-service="chatgpt"]:hover,
-  .omni-selection-tooltip__action[data-service="chatgpt"]:active {
-    color: #8fbcbb !important;
-  }
-
-  .omni-selection-tooltip__action[data-service="pronunciation"],
-  .omni-selection-tooltip__action[data-service="pronunciation"]:link,
-  .omni-selection-tooltip__action[data-service="pronunciation"]:visited,
-  .omni-selection-tooltip__action[data-service="pronunciation"]:hover,
-  .omni-selection-tooltip__action[data-service="pronunciation"]:active {
-    color: #f5f7fb !important;
-  }
-}
-
-.omni-selection-tooltip__action:hover svg {
-  transform: scale(1.07);
-}
-
-.omni-selection-tooltip__action:active svg {
-  transform: scale(0.96);
-}
-
-.omni-selection-tooltip__action[data-service="chatgpt"] svg {
+.omni-selection-tooltip__action[data-service="chatgpt"] .omni-selection-tooltip__icon svg {
   width: 19px;
   height: 19px;
 }
 
-.omni-selection-tooltip__action[data-service="pronunciation"] svg {
+.omni-selection-tooltip__action[data-service="pronunciation"] .omni-selection-tooltip__icon svg {
   width: 22px;
   height: 22px;
+}
+
+@keyframes omni-selection-tooltip-border-spin {
+  0% {
+    --omni-action-angle: 0deg;
+  }
+
+  100% {
+    --omni-action-angle: 360deg;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #omni-selection-tooltip,
+  .omni-selection-tooltip__hint,
+  .omni-selection-tooltip__action {
+    transition: none;
+  }
+
+  .omni-selection-tooltip__action:is(:hover, :focus-visible) {
+    animation: none;
+  }
 }

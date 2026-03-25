@@ -1,6 +1,7 @@
 (function () {
   const TOOLTIP_ID = "omni-selection-tooltip";
   const VISIBLE_CLASS = "is-visible";
+  const HINT_VISIBLE_CLASS = "is-visible";
   const ACTIONS = [
     {
       key: "google",
@@ -144,6 +145,7 @@
     tooltip.setAttribute("role", "toolbar");
     tooltip.setAttribute("aria-hidden", "true");
     tooltip.innerHTML = `
+      <div class="omni-selection-tooltip__hint" aria-hidden="true"></div>
       <div class="omni-selection-tooltip__actions"></div>
     `;
 
@@ -157,16 +159,64 @@
       const link = document.createElement("a");
       link.className = "omni-selection-tooltip__action";
       link.dataset.service = action.key;
+      link.dataset.tooltip = action.title;
       link.setAttribute("aria-label", action.label);
-      link.setAttribute("title", action.title);
       link.setAttribute("target", "_blank");
       link.setAttribute("rel", "noopener noreferrer");
-      link.innerHTML = action.icon;
+      link.innerHTML = `
+        <span class="omni-selection-tooltip__icon" aria-hidden="true">${action.icon}</span>
+      `;
+      link.addEventListener("pointerenter", () => {
+        showActionHint(tooltip, link);
+      });
+      link.addEventListener("pointerleave", () => {
+        hideActionHint(tooltip);
+      });
+      link.addEventListener("focus", () => {
+        showActionHint(tooltip, link);
+      });
+      link.addEventListener("blur", () => {
+        hideActionHint(tooltip);
+      });
       actions.appendChild(link);
     });
 
     document.body.appendChild(tooltip);
     return tooltip;
+  }
+
+  function showActionHint(tooltip, action) {
+    const hint = tooltip.querySelector(".omni-selection-tooltip__hint");
+    const text = action.dataset.tooltip;
+
+    if (!hint || !text) {
+      return;
+    }
+
+    hint.textContent = text;
+    hint.setAttribute("aria-hidden", "false");
+    hint.classList.add(HINT_VISIBLE_CLASS);
+
+    const tooltipRect = tooltip.getBoundingClientRect();
+    const actionRect = action.getBoundingClientRect();
+    const hintRect = hint.getBoundingClientRect();
+    const center = actionRect.left - tooltipRect.left + actionRect.width / 2;
+    const padding = 8;
+    const maxLeft = Math.max(padding, tooltipRect.width - hintRect.width - padding);
+    const left = Math.min(Math.max(center - hintRect.width / 2, padding), maxLeft);
+
+    hint.style.left = `${left}px`;
+  }
+
+  function hideActionHint(tooltip) {
+    const hint = tooltip.querySelector(".omni-selection-tooltip__hint");
+
+    if (!hint) {
+      return;
+    }
+
+    hint.setAttribute("aria-hidden", "true");
+    hint.classList.remove(HINT_VISIBLE_CLASS);
   }
 
   function positionTooltip(tooltip, rect) {
@@ -215,6 +265,7 @@
 
     function hideTooltip() {
       const tooltip = ensureTooltip();
+      hideActionHint(tooltip);
       tooltip.classList.remove(VISIBLE_CLASS);
       tooltip.setAttribute("aria-hidden", "true");
     }
