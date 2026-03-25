@@ -303,9 +303,9 @@ body.nightMode #omni-selection-tooltip,
 .omni-selection-tooltip__action[data-service="pronunciation"]:active {
   --omni-action-ring: conic-gradient(
     from var(--omni-action-angle),
-    rgba(15, 23, 42, 0.75) -10%,
+    rgba(15, 23, 42, 0.5) -10%,
     rgba(15, 23, 42, 0.96) 50%,
-    rgba(15, 23, 42, 0.75) 110%
+    rgba(15, 23, 42, 0.5) 110%
   );
   --omni-action-glow: rgba(15, 23, 42, 0.24);
   color: #192338 !important;
@@ -318,9 +318,9 @@ body.nightMode #omni-selection-tooltip,
 .omni-selection-tooltip__action[data-service="chatgpt"]:active {
   --omni-action-ring: conic-gradient(
     from var(--omni-action-angle),
-    rgba(16, 163, 127, 0.75) -10%,
+    rgba(16, 163, 127, 0.5) -10%,
     #10a37f 50%,
-    rgba(16, 163, 127, 0.75) 110%
+    rgba(16, 163, 127, 0.5) 110%
   );
   --omni-action-glow: rgba(16, 163, 127, 0.28);
   color: #0f7d74 !important;
@@ -342,9 +342,9 @@ body.nightMode #omni-selection-tooltip,
 .omni-selection-tooltip__action[data-service="claude"] {
   --omni-action-ring: conic-gradient(
     from var(--omni-action-angle),
-    rgba(217, 120, 87, 0.75) -10%,
+    rgba(217, 120, 87, 0.5) -10%,
     #d97757 50%,
-    rgba(217, 120, 87, 0.75) 110%
+    rgba(217, 120, 87, 0.5) 110%
   );
   --omni-action-glow: rgba(217, 119, 87, 0.28);
 }
