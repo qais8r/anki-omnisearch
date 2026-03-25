@@ -16,10 +16,14 @@
   --omni-tooltip-button-border: rgba(148, 163, 184, 0.2);
   --omni-tooltip-button-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.96), 0 10px 24px rgba(15, 23, 42, 0.07);
+  --omni-tooltip-button-hover-border: rgba(148, 163, 184, 0.24);
+  --omni-tooltip-button-hover-highlight: rgba(255, 255, 255, 0.64);
   --omni-tooltip-focus: rgba(59, 130, 246, 0.32);
   --omni-tooltip-label-bg: rgba(15, 23, 42, 0.94);
   --omni-tooltip-label-border: rgba(255, 255, 255, 0.1);
   --omni-tooltip-label-text: rgba(248, 250, 252, 0.98);
+  --omni-tooltip-label-shadow:
+    0 18px 32px rgba(15, 23, 42, 0.18), 0 2px 8px rgba(15, 23, 42, 0.08);
   position: fixed;
   z-index: 2147483647;
   display: grid;
@@ -46,42 +50,50 @@
 
 @media (prefers-color-scheme: dark) {
   #omni-selection-tooltip {
-    --omni-tooltip-bg: rgba(17, 24, 39, 0.82);
-    --omni-tooltip-bg-top: rgba(30, 41, 59, 0.92);
-    --omni-tooltip-border: rgba(255, 255, 255, 0.08);
+    --omni-tooltip-bg: rgba(33, 33, 36, 0.84);
+    --omni-tooltip-bg-top: rgba(33, 33, 36, 0.84);
+    --omni-tooltip-border: rgba(255, 255, 255, 0.1);
     --omni-tooltip-shadow:
       0 24px 52px rgba(0, 0, 0, 0.4), 0 8px 20px rgba(0, 0, 0, 0.26);
-    --omni-tooltip-text: #f8fafc;
-    --omni-tooltip-button-bg: #1e293b;
-    --omni-tooltip-button-bg-bottom: #131b26;
-    --omni-tooltip-button-border: rgba(255, 255, 255, 0.08);
+    --omni-tooltip-text: #f5f5f5;
+    --omni-tooltip-button-bg: #2b2b2f;
+    --omni-tooltip-button-bg-bottom: #2b2b2f;
+    --omni-tooltip-button-border: rgba(255, 255, 255, 0.1);
     --omni-tooltip-button-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 8px 22px rgba(0, 0, 0, 0.22);
-    --omni-tooltip-focus: rgba(125, 211, 252, 0.3);
-    --omni-tooltip-label-bg: rgba(248, 250, 252, 0.96);
-    --omni-tooltip-label-border: rgba(15, 23, 42, 0.08);
-    --omni-tooltip-label-text: #0f172a;
+      inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 8px 22px rgba(0, 0, 0, 0.24);
+    --omni-tooltip-button-hover-border: rgba(228, 228, 231, 0.2);
+    --omni-tooltip-button-hover-highlight: rgba(255, 255, 255, 0.12);
+    --omni-tooltip-focus: rgba(212, 212, 216, 0.3);
+    --omni-tooltip-label-bg: rgba(43, 43, 47, 0.96);
+    --omni-tooltip-label-border: rgba(255, 255, 255, 0.08);
+    --omni-tooltip-label-text: rgba(250, 250, 250, 0.96);
+    --omni-tooltip-label-shadow:
+      0 18px 32px rgba(0, 0, 0, 0.3), 0 2px 8px rgba(0, 0, 0, 0.16);
   }
 }
 
 html.nightMode #omni-selection-tooltip,
 body.nightMode #omni-selection-tooltip,
 .nightMode #omni-selection-tooltip {
-  --omni-tooltip-bg: rgba(17, 24, 39, 0.82);
-  --omni-tooltip-bg-top: rgba(30, 41, 59, 0.92);
-  --omni-tooltip-border: rgba(255, 255, 255, 0.08);
+  --omni-tooltip-bg: rgba(33, 33, 36, 0.84);
+  --omni-tooltip-bg-top: rgba(33, 33, 36, 0.84);
+  --omni-tooltip-border: rgba(255, 255, 255, 0.1);
   --omni-tooltip-shadow:
     0 24px 52px rgba(0, 0, 0, 0.4), 0 8px 20px rgba(0, 0, 0, 0.26);
-  --omni-tooltip-text: #f8fafc;
-  --omni-tooltip-button-bg: #1e293b;
-  --omni-tooltip-button-bg-bottom: #131b26;
-  --omni-tooltip-button-border: rgba(255, 255, 255, 0.08);
+  --omni-tooltip-text: #f5f5f5;
+  --omni-tooltip-button-bg: #2b2b2f;
+  --omni-tooltip-button-bg-bottom: #2b2b2f;
+  --omni-tooltip-button-border: rgba(255, 255, 255, 0.1);
   --omni-tooltip-button-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 8px 22px rgba(0, 0, 0, 0.22);
-  --omni-tooltip-focus: rgba(125, 211, 252, 0.3);
-  --omni-tooltip-label-bg: rgba(248, 250, 252, 0.96);
-  --omni-tooltip-label-border: rgba(15, 23, 42, 0.08);
-  --omni-tooltip-label-text: #0f172a;
+    inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 8px 22px rgba(0, 0, 0, 0.24);
+  --omni-tooltip-button-hover-border: rgba(228, 228, 231, 0.2);
+  --omni-tooltip-button-hover-highlight: rgba(255, 255, 255, 0.12);
+  --omni-tooltip-focus: rgba(212, 212, 216, 0.3);
+  --omni-tooltip-label-bg: rgba(43, 43, 47, 0.96);
+  --omni-tooltip-label-border: rgba(255, 255, 255, 0.08);
+  --omni-tooltip-label-text: rgba(250, 250, 250, 0.96);
+  --omni-tooltip-label-shadow:
+    0 18px 32px rgba(0, 0, 0, 0.3), 0 2px 8px rgba(0, 0, 0, 0.16);
 }
 
 #omni-selection-tooltip::after {
@@ -127,9 +139,7 @@ body.nightMode #omni-selection-tooltip,
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0)),
     var(--omni-tooltip-label-bg);
-  box-shadow:
-    0 18px 32px rgba(15, 23, 42, 0.18),
-    0 2px 8px rgba(15, 23, 42, 0.08);
+  box-shadow: var(--omni-tooltip-label-shadow);
   color: var(--omni-tooltip-label-text);
   font-size: 11px;
   font-weight: 600;
@@ -231,9 +241,9 @@ body.nightMode #omni-selection-tooltip,
 }
 
 .omni-selection-tooltip__action:is(:hover, :focus-visible) {
-  border-color: rgba(148, 163, 184, 0.24);
+  border-color: var(--omni-tooltip-button-hover-border);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.64),
+    inset 0 1px 0 var(--omni-tooltip-button-hover-highlight),
     0 12px 22px -18px var(--omni-action-glow);
   animation: omni-selection-tooltip-border-spin 3s cubic-bezier(0.4, 0, 0.2, 1)
     infinite;
@@ -293,9 +303,9 @@ body.nightMode #omni-selection-tooltip,
 .omni-selection-tooltip__action[data-service="pronunciation"]:active {
   --omni-action-ring: conic-gradient(
     from var(--omni-action-angle),
-    rgba(15, 23, 42, 0) -10%,
+    rgba(15, 23, 42, 0.75) -10%,
     rgba(15, 23, 42, 0.96) 50%,
-    rgba(15, 23, 42, 0) 110%
+    rgba(15, 23, 42, 0.75) 110%
   );
   --omni-action-glow: rgba(15, 23, 42, 0.24);
   color: #192338 !important;
@@ -308,9 +318,9 @@ body.nightMode #omni-selection-tooltip,
 .omni-selection-tooltip__action[data-service="chatgpt"]:active {
   --omni-action-ring: conic-gradient(
     from var(--omni-action-angle),
-    rgba(16, 163, 127, 0) -10%,
+    rgba(16, 163, 127, 0.75) -10%,
     #10a37f 50%,
-    rgba(16, 163, 127, 0) 110%
+    rgba(16, 163, 127, 0.75) 110%
   );
   --omni-action-glow: rgba(16, 163, 127, 0.28);
   color: #0f7d74 !important;
@@ -332,9 +342,9 @@ body.nightMode #omni-selection-tooltip,
 .omni-selection-tooltip__action[data-service="claude"] {
   --omni-action-ring: conic-gradient(
     from var(--omni-action-angle),
-    rgba(217, 119, 87, 0) -10%,
+    rgba(217, 120, 87, 0.75) -10%,
     #d97757 50%,
-    rgba(217, 119, 87, 0) 110%
+    rgba(217, 120, 87, 0.75) 110%
   );
   --omni-action-glow: rgba(217, 119, 87, 0.28);
 }
