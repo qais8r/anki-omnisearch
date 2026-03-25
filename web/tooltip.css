@@ -12,8 +12,8 @@
     0 22px 44px rgba(15, 23, 42, 0.14),
     0 8px 18px rgba(15, 23, 42, 0.07);
   --omni-tooltip-text: #0f172a;
-  --omni-tooltip-button-bg: rgba(255, 255, 255, 0.88);
-  --omni-tooltip-button-bg-bottom: rgba(248, 250, 252, 0.94);
+  --omni-tooltip-button-bg: #ffffff;
+  --omni-tooltip-button-bg-bottom: #f8fafc;
   --omni-tooltip-button-border: rgba(148, 163, 184, 0.2);
   --omni-tooltip-button-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.96),
@@ -52,8 +52,8 @@
       0 24px 52px rgba(0, 0, 0, 0.4),
       0 8px 20px rgba(0, 0, 0, 0.26);
     --omni-tooltip-text: #f8fafc;
-    --omni-tooltip-button-bg: rgba(30, 41, 59, 0.98);
-    --omni-tooltip-button-bg-bottom: rgba(19, 27, 38, 0.98);
+    --omni-tooltip-button-bg: #1e293b;
+    --omni-tooltip-button-bg-bottom: #131b26;
     --omni-tooltip-button-border: rgba(255, 255, 255, 0.08);
     --omni-tooltip-button-shadow:
       inset 0 1px 0 rgba(255, 255, 255, 0.08),
@@ -75,8 +75,8 @@ body.nightMode #omni-selection-tooltip,
     0 24px 52px rgba(0, 0, 0, 0.4),
     0 8px 20px rgba(0, 0, 0, 0.26);
   --omni-tooltip-text: #f8fafc;
-  --omni-tooltip-button-bg: rgba(30, 41, 59, 0.98);
-  --omni-tooltip-button-bg-bottom: rgba(19, 27, 38, 0.98);
+  --omni-tooltip-button-bg: #1e293b;
+  --omni-tooltip-button-bg-bottom: #131b26;
   --omni-tooltip-button-border: rgba(255, 255, 255, 0.08);
   --omni-tooltip-button-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.08),
@@ -165,7 +165,8 @@ body.nightMode #omni-selection-tooltip,
   --omni-action-angle: 0deg;
   --omni-action-radius: 13px;
   --omni-action-border-width: 2px;
-  --omni-action-surface-fill: var(--omni-tooltip-button-bg);
+  --omni-action-surface-fill:
+    linear-gradient(180deg, var(--omni-tooltip-button-bg), var(--omni-tooltip-button-bg-bottom));
   --omni-action-base:
     linear-gradient(180deg, var(--omni-tooltip-button-bg), var(--omni-tooltip-button-bg-bottom));
   --omni-action-ring:
