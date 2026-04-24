@@ -97,7 +97,7 @@
       label: "Claude",
       title: "Ask Claude",
       href: (selection) =>
-        `https://claude.ai/?q=${encodeURIComponent(
+        `https://claude.ai/new?q=${encodeURIComponent(
           `Explain this in an easy to understand way: ${selection}`,
         )}`,
       icon: `
@@ -226,16 +226,19 @@
     const tooltipRect = tooltip.getBoundingClientRect();
     const margin = 12;
     const gap = 16;
+    const fitsBelow =
+      rect.bottom + tooltipRect.height + gap + margin <= window.innerHeight;
     const fitsAbove = rect.top >= tooltipRect.height + gap + margin;
-    const placement = fitsAbove ? "top" : "bottom";
+    const placement = fitsBelow || !fitsAbove ? "bottom" : "top";
     const unclampedLeft = rect.left + rect.width / 2 - tooltipRect.width / 2;
     const left = Math.min(
       Math.max(unclampedLeft, margin),
       window.innerWidth - tooltipRect.width - margin,
     );
-    const top = fitsAbove
-      ? rect.top - tooltipRect.height - gap
-      : rect.bottom + gap;
+    const top =
+      placement === "top"
+        ? rect.top - tooltipRect.height - gap
+        : rect.bottom + gap;
 
     tooltip.dataset.placement = placement;
     tooltip.style.left = `${left}px`;

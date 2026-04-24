@@ -1,15 +1,11 @@
-@property --omni-action-angle {
-  syntax: "<angle>";
-  inherits: false;
-  initial-value: 0deg;
-}
-
 #omni-selection-tooltip {
   --omni-tooltip-bg: rgba(255, 255, 255, 0.78);
   --omni-tooltip-bg-top: rgba(255, 255, 255, 0.94);
   --omni-tooltip-border: rgba(15, 23, 42, 0.1);
   --omni-tooltip-shadow:
     0 22px 44px rgba(15, 23, 42, 0.14), 0 8px 18px rgba(15, 23, 42, 0.07);
+  --omni-tooltip-arrow-shadow:
+    0 12px 22px rgba(15, 23, 42, 0.08), 0 4px 10px rgba(15, 23, 42, 0.05);
   --omni-tooltip-text: #0f172a;
   --omni-tooltip-button-bg: #ffffff;
   --omni-tooltip-button-bg-bottom: #f8fafc;
@@ -55,6 +51,8 @@
     --omni-tooltip-border: rgba(255, 255, 255, 0.1);
     --omni-tooltip-shadow:
       0 24px 52px rgba(0, 0, 0, 0.4), 0 8px 20px rgba(0, 0, 0, 0.26);
+    --omni-tooltip-arrow-shadow:
+      0 14px 26px rgba(0, 0, 0, 0.3), 0 4px 10px rgba(0, 0, 0, 0.18);
     --omni-tooltip-text: #f5f5f5;
     --omni-tooltip-button-bg: #2b2b2f;
     --omni-tooltip-button-bg-bottom: #2b2b2f;
@@ -80,6 +78,8 @@ body.nightMode #omni-selection-tooltip,
   --omni-tooltip-border: rgba(255, 255, 255, 0.1);
   --omni-tooltip-shadow:
     0 24px 52px rgba(0, 0, 0, 0.4), 0 8px 20px rgba(0, 0, 0, 0.26);
+  --omni-tooltip-arrow-shadow:
+    0 14px 26px rgba(0, 0, 0, 0.3), 0 4px 10px rgba(0, 0, 0, 0.18);
   --omni-tooltip-text: #f5f5f5;
   --omni-tooltip-button-bg: #2b2b2f;
   --omni-tooltip-button-bg-bottom: #2b2b2f;
@@ -105,16 +105,20 @@ body.nightMode #omni-selection-tooltip,
   margin-left: -6px;
   border-right: 1px solid var(--omni-tooltip-border);
   border-bottom: 1px solid var(--omni-tooltip-border);
-  background: var(--omni-tooltip-bg-top);
+  box-shadow: var(--omni-tooltip-arrow-shadow);
+  pointer-events: none;
+  z-index: -1;
 }
 
 #omni-selection-tooltip[data-placement="top"]::after {
-  bottom: -7px;
+  bottom: -6px;
+  background: var(--omni-tooltip-bg);
   transform: rotate(45deg);
 }
 
 #omni-selection-tooltip[data-placement="bottom"]::after {
-  top: -7px;
+  top: -6px;
+  background: var(--omni-tooltip-bg-top);
   transform: rotate(225deg);
 }
 
@@ -155,12 +159,12 @@ body.nightMode #omni-selection-tooltip,
 }
 
 #omni-selection-tooltip[data-placement="top"] .omni-selection-tooltip__hint {
-  bottom: calc(100% + 14px);
+  bottom: calc(100% + 8px);
 }
 
 #omni-selection-tooltip[data-placement="bottom"] .omni-selection-tooltip__hint {
-  top: calc(100% + 14px);
-  transform: translateY(-6px);
+  top: calc(100% + 10px);
+  transform: translateY(-2px);
 }
 
 .omni-selection-tooltip__hint.is-visible {
@@ -169,24 +173,27 @@ body.nightMode #omni-selection-tooltip,
 }
 
 .omni-selection-tooltip__action {
-  --omni-action-angle: 0deg;
   --omni-action-radius: 13px;
-  --omni-action-border-width: 2px;
+  --omni-action-border-width: 1px;
   --omni-action-surface-fill: linear-gradient(
     180deg,
     var(--omni-tooltip-button-bg),
     var(--omni-tooltip-button-bg-bottom)
   );
-  --omni-action-base: linear-gradient(
+  --omni-action-hover-surface: linear-gradient(
     180deg,
-    var(--omni-tooltip-button-bg),
-    var(--omni-tooltip-button-bg-bottom)
+    rgba(255, 255, 255, 0.96),
+    rgba(248, 250, 252, 0.92)
   );
-  --omni-action-ring: conic-gradient(
-    from var(--omni-action-angle),
-    rgba(59, 130, 246, 0) 0%,
-    rgba(59, 130, 246, 0.94) 10%,
-    rgba(59, 130, 246, 0) 20%
+  --omni-action-border: linear-gradient(
+    180deg,
+    var(--omni-tooltip-button-border),
+    var(--omni-tooltip-button-border)
+  );
+  --omni-action-halo: radial-gradient(
+    circle at 50% 50%,
+    rgba(148, 163, 184, 0.16),
+    transparent 70%
   );
   --omni-action-glow: rgba(59, 130, 246, 0.24);
   position: relative;
@@ -196,17 +203,26 @@ body.nightMode #omni-selection-tooltip,
   height: 40px;
   margin: 0 auto;
   padding: 0;
-  border: 1px solid var(--omni-tooltip-button-border);
+  border: var(--omni-action-border-width) solid transparent;
   border-radius: var(--omni-action-radius);
-  background: var(--omni-action-base);
+  background:
+    var(--omni-action-surface-fill) padding-box,
+    linear-gradient(
+        180deg,
+        var(--omni-tooltip-button-border),
+        var(--omni-tooltip-button-border)
+      )
+      border-box;
   box-shadow: var(--omni-tooltip-button-shadow);
   color: var(--omni-tooltip-text);
   isolation: isolate;
-  overflow: hidden;
+  overflow: visible;
   text-decoration: none;
   transition:
     border-color 180ms cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 220ms cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    background 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 180ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .omni-selection-tooltip__action:link,
@@ -219,10 +235,17 @@ body.nightMode #omni-selection-tooltip,
 .omni-selection-tooltip__action::before {
   content: "";
   position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: transparent;
+  inset: -12px;
+  border-radius: calc(var(--omni-action-radius) + 12px);
+  background: var(--omni-action-halo);
+  filter: blur(14px) saturate(140%);
+  opacity: 0;
+  transform: scale(0.82);
+  transition:
+    opacity 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
   z-index: 0;
+  pointer-events: none;
 }
 
 .omni-selection-tooltip__action::after {
@@ -232,21 +255,40 @@ body.nightMode #omni-selection-tooltip,
   border-radius: calc(
     var(--omni-action-radius) - var(--omni-action-border-width)
   );
-  background: var(--omni-action-surface-fill);
+  background:
+    radial-gradient(
+      circle at 50% 12%,
+      rgba(255, 255, 255, 0.72),
+      rgba(255, 255, 255, 0) 56%
+    ),
+    var(--omni-action-surface-fill);
   z-index: 1;
-}
-
-.omni-selection-tooltip__action:is(:hover, :focus-visible)::before {
-  background: var(--omni-action-ring);
+  transition: background 220ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .omni-selection-tooltip__action:is(:hover, :focus-visible) {
-  border-color: var(--omni-tooltip-button-hover-border);
+  background:
+    var(--omni-action-hover-surface) padding-box,
+    var(--omni-action-border) border-box;
   box-shadow:
     inset 0 1px 0 var(--omni-tooltip-button-hover-highlight),
     0 12px 22px -18px var(--omni-action-glow);
-  animation: omni-selection-tooltip-border-spin 3s cubic-bezier(0.4, 0, 0.2, 1)
-    infinite;
+  transform: translateY(-1px);
+}
+
+.omni-selection-tooltip__action:is(:hover, :focus-visible)::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.omni-selection-tooltip__action:is(:hover, :focus-visible)::after {
+  background:
+    radial-gradient(
+      circle at 50% 14%,
+      rgba(255, 255, 255, 0.82),
+      rgba(255, 255, 255, 0) 58%
+    ),
+    var(--omni-action-hover-surface);
 }
 
 .omni-selection-tooltip__action:focus-visible {
@@ -261,6 +303,12 @@ body.nightMode #omni-selection-tooltip,
   place-items: center;
   width: 20px;
   height: 20px;
+  transition: transform 180ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.omni-selection-tooltip__action:is(:hover, :focus-visible)
+  .omni-selection-tooltip__icon {
+  transform: scale(1.05);
 }
 
 .omni-selection-tooltip__icon svg {
@@ -271,28 +319,50 @@ body.nightMode #omni-selection-tooltip,
 }
 
 .omni-selection-tooltip__action[data-service="google"] {
-  --omni-action-ring: conic-gradient(
-    from var(--omni-action-angle),
-    rgba(66, 133, 244, 0) -10%,
-    #4285f4 20%,
-    #34a853 40%,
-    #fbbc05 60%,
-    #ea4335 80%,
-    rgba(234, 67, 53, 0) 110%
+  --omni-action-border: conic-gradient(
+    from 220deg,
+    #4285f4 0deg 92deg,
+    #34a853 92deg 172deg,
+    #fbbc05 172deg 248deg,
+    #ea4335 248deg 360deg
   );
+  --omni-action-halo:
+    radial-gradient(
+      circle at 24% 26%,
+      rgba(66, 133, 244, 0.34),
+      transparent 42%
+    ),
+    radial-gradient(
+      circle at 76% 28%,
+      rgba(52, 168, 83, 0.28),
+      transparent 40%
+    ),
+    radial-gradient(circle at 30% 74%, rgba(251, 188, 5, 0.3), transparent 42%),
+    radial-gradient(circle at 76% 76%, rgba(234, 67, 53, 0.3), transparent 40%);
   --omni-action-glow: rgba(66, 133, 244, 0.24);
 }
 
 .omni-selection-tooltip__action[data-service="images"] {
-  --omni-action-ring: conic-gradient(
-    from var(--omni-action-angle),
-    rgba(66, 133, 244, 0) -10%,
-    #4285f4 20%,
-    #34a853 40%,
-    #fbbc04 60%,
-    #ea4335 80%,
-    rgba(234, 67, 53, 0) 110%
+  --omni-action-border: conic-gradient(
+    from 220deg,
+    #4285f4 0deg 88deg,
+    #34a853 88deg 176deg,
+    #fbbc04 176deg 264deg,
+    #ea4335 264deg 360deg
   );
+  --omni-action-halo:
+    radial-gradient(
+      circle at 26% 28%,
+      rgba(66, 133, 244, 0.28),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 72% 26%,
+      rgba(234, 67, 53, 0.26),
+      transparent 38%
+    ),
+    radial-gradient(circle at 72% 72%, rgba(251, 188, 4, 0.3), transparent 42%),
+    radial-gradient(circle at 28% 74%, rgba(52, 168, 83, 0.28), transparent 40%);
   --omni-action-glow: rgba(52, 168, 83, 0.22);
 }
 
@@ -301,11 +371,15 @@ body.nightMode #omni-selection-tooltip,
 .omni-selection-tooltip__action[data-service="pronunciation"]:visited,
 .omni-selection-tooltip__action[data-service="pronunciation"]:hover,
 .omni-selection-tooltip__action[data-service="pronunciation"]:active {
-  --omni-action-ring: conic-gradient(
-    from var(--omni-action-angle),
-    rgba(15, 23, 42, 0.5) -10%,
-    rgba(15, 23, 42, 0.96) 50%,
-    rgba(15, 23, 42, 0.5) 110%
+  --omni-action-border: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.92),
+    rgba(71, 85, 105, 0.92)
+  );
+  --omni-action-halo: radial-gradient(
+    circle at 50% 50%,
+    rgba(15, 23, 42, 0.26),
+    transparent 66%
   );
   --omni-action-glow: rgba(15, 23, 42, 0.24);
   color: #192338 !important;
@@ -316,35 +390,54 @@ body.nightMode #omni-selection-tooltip,
 .omni-selection-tooltip__action[data-service="chatgpt"]:visited,
 .omni-selection-tooltip__action[data-service="chatgpt"]:hover,
 .omni-selection-tooltip__action[data-service="chatgpt"]:active {
-  --omni-action-ring: conic-gradient(
-    from var(--omni-action-angle),
-    rgba(16, 163, 127, 0.5) -10%,
-    #10a37f 50%,
-    rgba(16, 163, 127, 0.5) 110%
+  --omni-action-border: linear-gradient(
+    135deg,
+    rgba(16, 163, 127, 0.98),
+    rgba(108, 229, 195, 0.92)
+  );
+  --omni-action-halo: radial-gradient(
+    circle at 50% 50%,
+    rgba(16, 163, 127, 0.28),
+    transparent 66%
   );
   --omni-action-glow: rgba(16, 163, 127, 0.28);
   color: #0f7d74 !important;
 }
 
 .omni-selection-tooltip__action[data-service="gemini"] {
-  --omni-action-ring: conic-gradient(
-    from var(--omni-action-angle),
-    rgba(49, 134, 255, 0) -10%,
-    #3186ff 20%,
-    #08b962 40%,
-    #fabc12 60%,
-    #f94543 80%,
-    rgba(249, 69, 67, 0) 110%
+  --omni-action-border: conic-gradient(
+    from 210deg,
+    #3186ff 0deg 112deg,
+    #08b962 112deg 184deg,
+    #fabc12 184deg 264deg,
+    #f94543 264deg 360deg
   );
+  --omni-action-halo:
+    radial-gradient(
+      circle at 26% 22%,
+      rgba(49, 134, 255, 0.34),
+      transparent 42%
+    ),
+    radial-gradient(circle at 76% 30%, rgba(8, 185, 98, 0.22), transparent 38%),
+    radial-gradient(
+      circle at 34% 74%,
+      rgba(250, 188, 18, 0.28),
+      transparent 42%
+    ),
+    radial-gradient(circle at 74% 72%, rgba(249, 69, 67, 0.24), transparent 40%);
   --omni-action-glow: rgba(49, 134, 255, 0.24);
 }
 
 .omni-selection-tooltip__action[data-service="claude"] {
-  --omni-action-ring: conic-gradient(
-    from var(--omni-action-angle),
-    rgba(217, 120, 87, 0.5) -10%,
-    #d97757 50%,
-    rgba(217, 120, 87, 0.5) 110%
+  --omni-action-border: linear-gradient(
+    135deg,
+    rgba(217, 119, 87, 0.98),
+    rgba(255, 206, 168, 0.92)
+  );
+  --omni-action-halo: radial-gradient(
+    circle at 50% 50%,
+    rgba(217, 119, 87, 0.3),
+    transparent 66%
   );
   --omni-action-glow: rgba(217, 119, 87, 0.28);
 }
@@ -414,24 +507,13 @@ body.nightMode
   height: 22px;
 }
 
-@keyframes omni-selection-tooltip-border-spin {
-  0% {
-    --omni-action-angle: 0deg;
-  }
-
-  100% {
-    --omni-action-angle: 360deg;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   #omni-selection-tooltip,
   .omni-selection-tooltip__hint,
-  .omni-selection-tooltip__action {
+  .omni-selection-tooltip__action,
+  .omni-selection-tooltip__action::before,
+  .omni-selection-tooltip__action::after,
+  .omni-selection-tooltip__icon {
     transition: none;
-  }
-
-  .omni-selection-tooltip__action:is(:hover, :focus-visible) {
-    animation: none;
   }
 }
